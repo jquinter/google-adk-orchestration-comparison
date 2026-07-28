@@ -1,0 +1,8 @@
+.venv/
+.adk/
+.env
+__pycache__/
+*.pyc
+*.log
+run_web.sh
+run.sh
