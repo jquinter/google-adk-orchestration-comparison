@@ -4,6 +4,19 @@ This repository contains two alternative implementations of a mathematical expre
 
 It provides a comparative codebase demonstrating the differences between **Dynamic Multi-Agent Routing** and **Structured Workflow Loops (`LoopAgent`)**, including deep hierarchical nesting and error boundary validation.
 
+> ### ⚠️ ADK version compatibility
+>
+> This code targets **ADK 1.x**. It uses the 1.x agent API — `Agent` with `transfer_to_agent` routing, `LoopAgent`, and `exit_loop`. **ADK 2.0 (GA) introduced breaking changes** to the agent API, the event model, and the session schema, so a bare `pip install google-adk` — which now resolves to 2.x — will **not** run this repo as-is. Install the pinned dependencies with `pip install -r requirements.txt` (which pins `google-adk<2`).
+>
+> The two patterns map cleanly onto ADK 2.0's dual orchestration model, so the comparison stays conceptually current:
+>
+> | This repo (ADK 1.x) | ADK 2.0 equivalent |
+> |---|---|
+> | Multi-agent routing (`transfer_to_agent`) | **Task API** — coordinator + sub-agents delegation |
+> | `LoopAgent` workflow | **Workflow DAG** (`google.adk.Workflow`) |
+>
+> The findings below — the coordination-cost trade-off and the failure modes — are *structural*: they describe orchestrating with an LLM vs. with code, not a specific API version, and hold after migration. A 2.0 port is future work.
+
 ---
 
 ## Codebase Architecture
@@ -41,9 +54,10 @@ It provides a comparative codebase demonstrating the differences between **Dynam
 ## Getting Started
 
 ### 1. Enable Virtual Environment & Install Dependencies
-Ensure you have the virtual environment activated before running any scripts:
+Activate your virtual environment and install the pinned dependencies before running any scripts:
 ```bash
 source .venv/bin/activate
+pip install -r requirements.txt   # pins google-adk<2 (ADK 1.x)
 ```
 
 ### 2. Configure Environment Variables
@@ -100,3 +114,40 @@ PYTHONPATH=. .venv/bin/python print_timeline_multiagent.py
 ```bash
 PYTHONPATH=. .venv/bin/python print_timeline_workflow.py
 ```
+
+---
+
+## Quantitative Benchmark
+
+The [`benchmark/`](benchmark/) directory measures the **cost of coordination** for each pattern across a ladder of expressions of increasing complexity, so the multi-agent-vs-workflow trade-off is backed by numbers rather than intuition. It captures, per run: LLM calls, input/output tokens, tool-call counts (`transfer_to_agent` vs. `update_expression`), per-run cost (USD), wall-clock, and the variance across repetitions.
+
+```bash
+# 1. Run the matrix (2 patterns x 5 rungs x N reps) -> benchmark/results.jsonl
+PYTHONPATH=. .venv/bin/python benchmark/bench_run.py
+
+# 2. Aggregate into a table (mean +/- sigma) and a CSV
+.venv/bin/python benchmark/bench_report.py --csv benchmark/bench.csv
+
+# 3. Generate the three figures (with error bars)
+.venv/bin/python benchmark/bench_plot.py --csv benchmark/bench.csv
+```
+
+LLM-call and token counts are the robust, reproducible metrics and drive both cost and latency; wall-clock is noisy (the agents retry up to 30x on HTTP 429), so report it with error bars or lead with calls and tokens. See [`benchmark/README.md`](benchmark/README.md) for the full methodology and caveats.
+
+---
+
+## Hard-won lessons
+
+Three failure modes that only surface once these systems actually run — each with its fix in the code:
+
+1. **Tool-loop recurrence** — uncontrolled recursion of tool-calls that never converges.
+2. **Operator precedence breaking** under a fixed sequential pass — the right answer for the wrong reason.
+3. **Silent loop exit** — `exit_loop` closing the session before the final result is printed.
+
+These are discussed in the companion article: [*Comparing Orchestration Patterns in Google ADK*](https://medium.com/google-cloud/comparing-orchestration-patterns-in-google-adk-multi-agent-vs-workflow-based-loops-958eb1a835dd).
+
+---
+
+## A note on the model
+
+The `.env` uses `gemini-2.5-flash`. As of late 2026 this is a prior-generation model (Gemini 3 Flash is the current default), but it is still available and its pricing — $0.30 / $2.50 per 1M input/output tokens (Vertex standard, verified Oct 2026) — is what the benchmark's cost model assumes. The pattern-level conclusions are **model-independent**: the coordination tax is a property of the orchestration, not of the model generation. Swap `MODEL` in `.env` to benchmark another model.

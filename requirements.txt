@@ -1,0 +1,15 @@
+# Runtime — PINNED TO ADK 1.x.
+# The agents use the 1.x API (Agent with transfer_to_agent routing, LoopAgent,
+# exit_loop). ADK 2.0 (GA) introduced breaking changes to the agent API, the
+# event model and the session schema, so a bare `pip install google-adk` —
+# which now resolves to 2.x — will NOT run this repo as-is.
+# See README › "ADK version compatibility".
+google-adk<2
+
+# Imported directly by the agents.
+google-genai
+google-cloud-logging
+python-dotenv
+
+# Benchmark tooling (benchmark/).
+matplotlib>=3.8
