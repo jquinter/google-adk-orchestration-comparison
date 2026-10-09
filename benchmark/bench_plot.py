@@ -173,13 +173,14 @@ def _ordered_rungs(by_pat):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", default="benchmark/bench.csv")
+    ap.add_argument("--prefix", default="", help="prefijo para los PNG, p.ej. 'invoice_'")
     args = ap.parse_args()
 
     by_pat = load(args.csv)
     print("Generando figuras:")
-    fig1_escalado(by_pat, "fig1_escalado.png")
-    fig2_predictibilidad(by_pat, "fig2_predictibilidad.png")
-    fig3_coordinacion(by_pat, "fig3_coordinacion.png")
+    fig1_escalado(by_pat, f"{args.prefix}fig1_escalado.png")
+    fig2_predictibilidad(by_pat, f"{args.prefix}fig2_predictibilidad.png")
+    fig3_coordinacion(by_pat, f"{args.prefix}fig3_coordinacion.png")
     print("Listo.")
 
 

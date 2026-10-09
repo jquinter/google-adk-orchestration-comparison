@@ -51,8 +51,13 @@ def main():
         o_m, o_s = agg([r["out_tok"] for r in g])
         d_m, d_s = agg([r["cost_usd"] for r in g])
         w_m, w_s = agg([r["wall_s"] for r in g])
-        tr_m, _ = agg([r["tool_calls"].get("transfer_to_agent", 0) for r in g])
-        up_m, _ = agg([r["tool_calls"].get("update_expression", 0) for r in g])
+        # Calculator: transfer_to_agent vs. update_expression. Examples: coordination vs. work tool calls.
+        if g[0].get("example", "calculator") == "calculator":
+            tr_m, _ = agg([r["tool_calls"].get("transfer_to_agent", 0) for r in g])
+            up_m, _ = agg([r["tool_calls"].get("update_expression", 0) for r in g])
+        else:
+            tr_m, _ = agg([r["coordination_calls"] for r in g])
+            up_m, _ = agg([r["work_calls"] for r in g])
 
         graded = [r["correct"] for r in g if r["correct"] is not None]
         okp = 100 * sum(graded) / len(graded) if graded else float("nan")

@@ -6,3 +6,8 @@ __pycache__/
 *.log
 run_web.sh
 run.sh
+
+# Benchmark outputs
+benchmark/results*.jsonl
+benchmark/*.csv
+*fig[0-9]_*.png

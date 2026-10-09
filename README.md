@@ -61,7 +61,11 @@ pip install -r requirements.txt   # pins google-adk<2 (ADK 1.x)
 ```
 
 ### 2. Configure Environment Variables
-Verify that the `.env` files in both directories (`parent_and_subagents/.env` and `workflow_agents/.env`) contain your correct Vertex AI project, location, and model configuration:
+Copy the template and fill in your Vertex AI project, location, and model:
+```bash
+cp .env.TEMPLATE .env
+```
+A single `.env` at the repo root is picked up by every agent (`load_dotenv()` searches upwards from each agent's directory). A `.env` inside a package directory (e.g. `parent_and_subagents/.env`) takes precedence for that package. The minimum configuration is:
 ```env
 GOOGLE_GENAI_USE_VERTEXAI=TRUE
 GOOGLE_CLOUD_PROJECT=your-gcp-project-id
@@ -133,6 +137,12 @@ PYTHONPATH=. .venv/bin/python benchmark/bench_run.py
 ```
 
 LLM-call and token counts are the robust, reproducible metrics and drive both cost and latency; wall-clock is noisy (the agents retry up to 30x on HTTP 429), so report it with error bars or lead with calls and tokens. See [`benchmark/README.md`](benchmark/README.md) for the full methodology and caveats.
+
+---
+
+## More examples
+
+The calculator isolates the coordination tax in its simplest form. [`examples/`](examples/) applies the same comparison to production-shaped problems — an invoice pipeline (workflow wins), support triage with mid-flight discovery (multi-agent wins) and a writer/critic loop — each with code-graded cases that plug into the benchmark via `--example`. See [`examples/README.md`](examples/README.md).
 
 ---
 
