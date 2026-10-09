@@ -1,0 +1,54 @@
+<svg viewBox="0 0 520 220" style="width:100%;height:auto" role="img" aria-label="Llamadas al LLM por corrida según la complejidad">
+<line x1="56" y1="182" x2="500" y2="182" stroke="rgba(255,255,255,.25)"/>
+<line x1="56" y1="22" x2="56" y2="182" stroke="rgba(255,255,255,.25)"/>
+<line x1="56" y1="142.0" x2="500" y2="142.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="146.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">10</text>
+<line x1="56" y1="102.0" x2="500" y2="102.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="106.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">20</text>
+<line x1="56" y1="62.0" x2="500" y2="62.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="66.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">30</text>
+<line x1="56" y1="22.0" x2="500" y2="22.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="26.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">40</text>
+<text x="86.0" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">B · 1 ops</text>
+<text x="182.0" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L1 · 4 ops</text>
+<text x="278.0" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L2 · 6 ops</text>
+<text x="374.0" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L3 · 8 ops</text>
+<text x="470.0" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L4 · 14 ops</text>
+<text x="56" y="14" fill="var(--muted)" font-family="Roboto Mono" font-size="11">llamadas al LLM por corrida (media ± σ)</text>
+<polyline fill="none" stroke="var(--red)" stroke-width="3" points="86.0,161.6 182.0,140.7 278.0,131.8 374.0,100.0 470.0,115.3"/>
+<line x1="86.0" y1="160.4" x2="86.0" y2="162.8" stroke="var(--red)" stroke-width="1.5"/>
+<circle cx="86.0" cy="161.6" r="4" fill="var(--red)"/>
+<line x1="182.0" y1="131.2" x2="182.0" y2="150.1" stroke="var(--red)" stroke-width="1.5"/>
+<circle cx="182.0" cy="140.7" r="4" fill="var(--red)"/>
+<line x1="278.0" y1="120.1" x2="278.0" y2="143.4" stroke="var(--red)" stroke-width="1.5"/>
+<circle cx="278.0" cy="131.8" r="4" fill="var(--red)"/>
+<line x1="374.0" y1="63.2" x2="374.0" y2="136.8" stroke="var(--red)" stroke-width="1.5"/>
+<circle cx="374.0" cy="100.0" r="4" fill="var(--red)"/>
+<line x1="470.0" y1="92.7" x2="470.0" y2="138.0" stroke="var(--red)" stroke-width="1.5"/>
+<circle cx="470.0" cy="115.3" r="4" fill="var(--red)"/>
+<polyline fill="none" stroke="var(--blue)" stroke-width="3" points="86.0,142.0 182.0,154.4 278.0,134.0 374.0,128.8 470.0,116.0"/>
+<line x1="86.0" y1="142.0" x2="86.0" y2="142.0" stroke="var(--blue)" stroke-width="1.5"/>
+<circle cx="86.0" cy="142.0" r="4" fill="var(--blue)"/>
+<line x1="182.0" y1="153.2" x2="182.0" y2="155.6" stroke="var(--blue)" stroke-width="1.5"/>
+<circle cx="182.0" cy="154.4" r="4" fill="var(--blue)"/>
+<line x1="278.0" y1="124.4" x2="278.0" y2="143.6" stroke="var(--blue)" stroke-width="1.5"/>
+<circle cx="278.0" cy="134.0" r="4" fill="var(--blue)"/>
+<line x1="374.0" y1="117.3" x2="374.0" y2="140.3" stroke="var(--blue)" stroke-width="1.5"/>
+<circle cx="374.0" cy="128.8" r="4" fill="var(--blue)"/>
+<line x1="470.0" y1="83.2" x2="470.0" y2="148.8" stroke="var(--blue)" stroke-width="1.5"/>
+<circle cx="470.0" cy="116.0" r="4" fill="var(--blue)"/>
+<polyline fill="none" stroke="var(--limegreen)" stroke-width="3" points="86.0,178.0 182.0,178.0 278.0,178.0 374.0,178.0 470.0,178.0"/>
+<line x1="86.0" y1="178.0" x2="86.0" y2="178.0" stroke="var(--limegreen)" stroke-width="1.5"/>
+<circle cx="86.0" cy="178.0" r="4" fill="var(--limegreen)"/>
+<line x1="182.0" y1="178.0" x2="182.0" y2="178.0" stroke="var(--limegreen)" stroke-width="1.5"/>
+<circle cx="182.0" cy="178.0" r="4" fill="var(--limegreen)"/>
+<line x1="278.0" y1="178.0" x2="278.0" y2="178.0" stroke="var(--limegreen)" stroke-width="1.5"/>
+<circle cx="278.0" cy="178.0" r="4" fill="var(--limegreen)"/>
+<line x1="374.0" y1="178.0" x2="374.0" y2="178.0" stroke="var(--limegreen)" stroke-width="1.5"/>
+<circle cx="374.0" cy="178.0" r="4" fill="var(--limegreen)"/>
+<line x1="470.0" y1="178.0" x2="470.0" y2="178.0" stroke="var(--limegreen)" stroke-width="1.5"/>
+<circle cx="470.0" cy="178.0" r="4" fill="var(--limegreen)"/>
+<text x="478.0" y="119.3" fill="var(--red)" font-family="Roboto Mono" font-size="11">17</text>
+<text x="478.0" y="132.3" fill="var(--blue)" font-family="Roboto Mono" font-size="11">17</text>
+<text x="478.0" y="182.0" fill="var(--limegreen)" font-family="Roboto Mono" font-size="11">1</text>
+</svg>

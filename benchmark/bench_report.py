@@ -33,7 +33,8 @@ def main():
     rows = [json.loads(l) for l in open(args.infile, encoding="utf-8")]
     cells = defaultdict(list)
     for r in rows:
-        cells[(r["pattern"], r["rung"], r["ops"])].append(r)
+        # Guard cases (division by zero) have no operation count: report them as ops 0.
+        cells[(r["pattern"], r["rung"], r["ops"] or 0)].append(r)
 
     hdr = (f'{"patrón":22} {"peld":4} {"ops":>3} {"llamadas":>12} '
            f'{"in_tok":>14} {"out_tok":>13} {"costo_usd":>17} '

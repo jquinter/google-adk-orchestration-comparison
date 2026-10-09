@@ -1,0 +1,28 @@
+<svg viewBox="0 0 520 220" style="width:100%;height:auto" role="img" aria-label="Llamadas de coordinación por peldaño">
+<line x1="56" y1="182" x2="500" y2="182" stroke="rgba(255,255,255,.25)"/>
+<line x1="56" y1="22" x2="56" y2="182" stroke="rgba(255,255,255,.25)"/>
+<line x1="56" y1="142.0" x2="500" y2="142.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="146.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">5</text>
+<line x1="56" y1="102.0" x2="500" y2="102.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="106.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">10</text>
+<line x1="56" y1="62.0" x2="500" y2="62.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="66.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">15</text>
+<line x1="56" y1="22.0" x2="500" y2="22.0" stroke="rgba(255,255,255,.08)"/>
+<text x="50" y="26.0" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="end">20</text>
+<text x="100.4" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">B</text>
+<text x="189.2" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L1</text>
+<text x="278.0" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L2</text>
+<text x="366.8" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L3</text>
+<text x="455.6" y="198" fill="var(--muted)" font-family="Roboto Mono" font-size="11" text-anchor="middle">L4</text>
+<text x="56" y="14" fill="var(--muted)" font-family="Roboto Mono" font-size="11">transfer_to_agent por corrida (media)</text>
+<rect x="66.4" y="149.2" width="31.0" height="32.8" rx="2" fill="var(--red)"/>
+<rect x="100.4" y="158.0" width="31.0" height="24.0" rx="2" fill="var(--blue)"/>
+<rect x="155.2" y="107.4" width="31.0" height="74.6" rx="2" fill="var(--red)"/>
+<rect x="189.2" y="174.0" width="31.0" height="8.0" rx="2" fill="var(--blue)"/>
+<rect x="244.0" y="89.5" width="31.0" height="92.5" rx="2" fill="var(--red)"/>
+<rect x="278.0" y="172.4" width="31.0" height="9.6" rx="2" fill="var(--blue)"/>
+<rect x="332.8" y="26.0" width="31.0" height="156.0" rx="2" fill="var(--red)"/>
+<rect x="366.8" y="169.2" width="31.0" height="12.8" rx="2" fill="var(--blue)"/>
+<rect x="421.6" y="56.6" width="31.0" height="125.4" rx="2" fill="var(--red)"/>
+<rect x="455.6" y="167.6" width="31.0" height="14.4" rx="2" fill="var(--blue)"/>
+</svg>

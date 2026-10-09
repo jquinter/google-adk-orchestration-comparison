@@ -134,6 +134,16 @@ PYTHONPATH=. .venv/bin/python benchmark/bench_run.py
 .venv/bin/python benchmark/bench_plot.py --csv benchmark/bench.csv
 ```
 
+**Results** (calculator, ADK 1.39, gemini-2.5-flash, 10 runs per rung; `benchmark/full/`):
+
+| Pattern | Correct | LLM calls / run | Cost / run | Time / run |
+|---|---|---|---|---|
+| Multi-agent | 59/66 | 11.0 | $0.0100 | 31.9 s |
+| Workflow (`LoopAgent`) | 58/70 | 10.7 | $0.0117 | 32.3 s |
+| Single agent, structured instruction ([`baseline/`](baseline/)) | 70/70 | 1 | $0.0011 | 2.1 s |
+
+The coordination tax does not disappear with the 1.x `LoopAgent`: it changes form. The multi-agent pattern pays in routing (~10 `transfer_to_agent` per run); the loop pays in passes with nothing to do (only 3.5 of its 10.7 calls change the expression), and fails 10/10 on `2 + 3 * 4 - 10 / 2` (broken precedence). The ADK 2.x graph port removes both (see [`adk2/`](adk2/)). Costs include thinking tokens.
+
 LLM-call and token counts are the robust, reproducible metrics and drive both cost and latency; wall-clock is noisy (the agents retry up to 30x on HTTP 429), so report it with error bars or lead with calls and tokens. See [`benchmark/README.md`](benchmark/README.md) for the full methodology and caveats.
 
 ---
@@ -148,11 +158,13 @@ The calculator isolates the coordination tax in its simplest form. [`examples/`]
 
 ## Hard-won lessons
 
-Three failure modes that only surface once these systems actually run — each with its fix in the code:
+Failure modes that only surface once these systems actually run. The first three have their fix in the code; the last two showed up while benchmarking (see [`adk2/evidence/`](adk2/evidence/)):
 
 1. **Tool-loop recurrence** — uncontrolled recursion of tool-calls that never converges.
 2. **Operator precedence breaking** under a fixed sequential pass — the right answer for the wrong reason.
 3. **Silent loop exit** — `exit_loop` closing the session before the final result is printed.
+4. **Dropped hand-off** — a specialist answers but never calls `transfer_to_agent` back, so the run ends with no final answer and no error. Frequent in `examples/writer_critic` (multi-agent).
+5. **Premature exit** — with `119 - 10` still pending, a specialist calls `exit_loop`: the LLM decided the work was done. The ADK 2.x graph port removes it by making the stop condition code.
 
 These are discussed in the companion article: [*Comparing Orchestration Patterns in Google ADK*](https://medium.com/google-cloud/comparing-orchestration-patterns-in-google-adk-multi-agent-vs-workflow-based-loops-958eb1a835dd).
 
