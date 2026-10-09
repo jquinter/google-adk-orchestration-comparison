@@ -1,0 +1,61 @@
+multiagent             B            rep-1 calls= 5 in=  2986 out=   74 think=  580 coord= 4 work= 0  10.0s $0.00253 ok=True
+workflow               B            rep-1 calls=10 in=  5975 out=  113 think=  858 coord= 4 work= 2  26.7s $0.00422 ok=True
+single_naive           B            rep-1 calls= 1 in=    40 out=    1 think=   33 coord= 0 work= 0   1.8s $0.00010 ok=True
+single_structured      B            rep-1 calls= 1 in=   535 out=   14 think=   26 coord= 0 work= 0   2.2s $0.00026 ok=True
+multiagent             L1           rep 1 calls=11 in=  9329 out=  146 think= 1792 coord=10 work= 0  17.9s $0.00764 ok=True
+single_structured      L3           rep 1 calls= 1 in=   564 out=   92 think=  499 coord= 0 work= 0   3.1s $0.00165 ok=True
+workflow               G1           rep 1 calls= 7 in=  3602 out=   84 think=  639 coord= 3 work= 1   9.1s $0.00289 ok=True
+single_naive           G2           rep 1 calls= 1 in=    48 out=   25 think=  118 coord= 0 work= 0   1.3s $0.00037 ok=False
+multiagent             G1           rep 0 calls= 5 in=  3016 out=  115 think=  527 coord= 4 work= 0   7.2s $0.00251 ok=True
+workflow               L3           rep 1 calls=11 in=  7441 out=  186 think= 1229 coord= 2 work= 4  14.6s $0.00577 ok=True
+multiagent             G2           rep 1 calls= 4 in=  2082 out=   58 think= 1976 coord= 3 work= 0  13.4s $0.00571 ok=False
+single_naive           L2           rep 1 calls= 1 in=    59 out=    3 think=  287 coord= 0 work= 0   1.8s $0.00074 ok=True
+single_structured      L1           rep 0 calls= 1 in=   544 out=   42 think=   88 coord= 0 work= 0   1.2s $0.00049 ok=True
+workflow               L1           rep 0 calls=14 in= 11344 out=  142 think= 2931 coord= 4 work= 4  25.0s $0.01109 ok=True
+multiagent             L4           rep 1 calls=13 in= 15566 out=  242 think= 7913 coord=12 work= 0  51.0s $0.02506 ok=True
+single_naive           L1           rep 1 calls= 1 in=    49 out=    1 think=  218 coord= 0 work= 0   1.4s $0.00056 ok=True
+single_structured      G2           rep 1 calls= 1 in=   543 out=   30 think=  140 coord= 0 work= 0   1.5s $0.00059 ok=True
+single_structured      L3           rep 0 calls= 1 in=   564 out=   92 think=  499 coord= 0 work= 0   2.5s $0.00165 ok=True
+single_structured      L2           rep 0 calls= 1 in=   554 out=   69 think=  378 coord= 0 work= 0   2.3s $0.00128 ok=True
+single_structured      L4           rep 1 calls= 1 in=   588 out=  159 think=  851 coord= 0 work= 0   5.2s $0.00270 ok=True
+workflow               L2           rep 0 calls=12 in= 13156 out=  177 think= 3411 coord= 2 work= 5  25.2s $0.01292 ok=True
+workflow               B            rep 0 calls=10 in=  5928 out=   97 think=  903 coord= 4 work= 2  11.8s $0.00428 ok=True
+workflow               L4           rep 0 calls=33 in= 52755 out=  851 think= 5275 coord= 8 work=12  47.7s $0.03114 ok=True
+workflow               G1           rep 0 calls= 7 in=  3593 out=   69 think=  644 coord= 3 work= 1   7.6s $0.00286 ok=True
+multiagent             G2           rep 0 calls= 7 in=  4729 out=  117 think= 4713 coord= 6 work= 0  28.1s $0.01349 ok=True
+multiagent             B            rep 1 calls= 9 in=  6151 out=  146 think= 4350 coord= 8 work= 0  29.3s $0.01309 ok=True
+multiagent             L1           rep 0 calls=11 in=  8247 out=  174 think= 1257 coord=10 work= 0  31.4s $0.00605 ok=True
+single_structured      B            rep 1 calls= 1 in=   535 out=   14 think=   26 coord= 0 work= 0   0.9s $0.00026 ok=True
+multiagent             L2           rep 0 calls=13 in= 10877 out=  260 think= 1565 coord=12 work= 0  17.9s $0.00783 ok=True
+single_naive           B            rep 1 calls= 1 in=    40 out=    1 think=   33 coord= 0 work= 0   0.9s $0.00010 ok=True
+workflow               L3           rep 0 calls=13 in= 10127 out=  209 think= 1349 coord= 2 work= 5  15.8s $0.00693 ok=True
+workflow               B            rep 1 calls=10 in=  6071 out=   95 think=  766 coord= 4 work= 2   9.5s $0.00397 ok=True
+single_naive           L4           rep 0 calls= 1 in=    93 out=    3 think=  420 coord= 0 work= 0   2.1s $0.00109 ok=True
+single_naive           G1           rep 0 calls= 1 in=    40 out=    8 think=   37 coord= 0 work= 0   0.7s $0.00012 ok=False
+multiagent             G1           rep 1 calls= 5 in=  3061 out=   97 think=  364 coord= 4 work= 0   5.7s $0.00207 ok=True
+multiagent             L2           rep 1 calls=13 in= 10743 out=  251 think= 1380 coord=12 work= 0  17.6s $0.00730 ok=True
+single_structured      L1           rep 1 calls= 1 in=   544 out=   42 think=  151 coord= 0 work= 0   1.6s $0.00065 ok=True
+single_naive           L3           rep 1 calls= 1 in=    69 out=    3 think=  338 coord= 0 work= 0   2.0s $0.00087 ok=True
+multiagent             L4           rep 0 calls=13 in= 12090 out=  284 think= 4892 coord=12 work= 0  32.5s $0.01657 ok=True
+multiagent             B            rep 0 calls= 5 in=  2986 out=   65 think=  566 coord= 4 work= 0   6.9s $0.00247 ok=True
+workflow               L2           rep 1 calls=11 in=  6597 out=  157 think= 1144 coord= 2 work= 4  14.4s $0.00523 ok=True
+multiagent             L3           rep 1 calls=13 in= 11550 out=  233 think= 2967 coord=12 work= 0  23.6s $0.01146 ok=True
+single_naive           L4           rep 1 calls= 1 in=    93 out=    3 think=  431 coord= 0 work= 0   2.5s $0.00111 ok=True
+single_structured      G1           rep 0 calls= 1 in=   535 out=   13 think=   33 coord= 0 work= 0   1.0s $0.00028 ok=True
+single_structured      G2           rep 0 calls= 1 in=   543 out=   30 think=  140 coord= 0 work= 0   1.3s $0.00059 ok=True
+single_naive           G1           rep 1 calls= 1 in=    40 out=    9 think=   47 coord= 0 work= 0   1.0s $0.00015 ok=False
+single_naive           L1           rep 0 calls= 1 in=    49 out=    1 think=  187 coord= 0 work= 0   1.2s $0.00048 ok=True
+single_structured      L4           rep 0 calls= 1 in=   588 out=  159 think=  851 coord= 0 work= 0   5.1s $0.00270 ok=True
+workflow               L4           rep 1 calls=33 in= 51905 out=  832 think= 5353 coord= 8 work=12 105.2s $0.03103 ok=True
+multiagent             L3           rep 0 calls=17 in= 20882 out=  367 think= 6046 coord=16 work= 0  41.8s $0.02230 ok=True
+single_naive           B            rep 0 calls= 1 in=    40 out=    1 think=   33 coord= 0 work= 0   0.9s $0.00010 ok=True
+workflow               G2           rep 0 calls= 9 in=  5037 out=  107 think=  726 coord= 3 work= 3  19.6s $0.00359 ok=True
+single_structured      G1           rep 1 calls= 1 in=   535 out=   13 think=   33 coord= 0 work= 0   1.1s $0.00028 ok=True
+single_naive           G2           rep 0 calls= 1 in=    48 out=   25 think=  118 coord= 0 work= 0   1.5s $0.00037 ok=False
+single_structured      B            rep 0 calls= 1 in=   535 out=   14 think=   26 coord= 0 work= 0   0.8s $0.00026 ok=True
+single_structured      L2           rep 1 calls= 1 in=   554 out=   69 think=  378 coord= 0 work= 0   2.5s $0.00128 ok=True
+single_naive           L3           rep 0 calls= 1 in=    69 out=    3 think=  348 coord= 0 work= 0   1.9s $0.00090 ok=True
+workflow               G2           rep 1 calls= 9 in=  5042 out=  107 think=  656 coord= 3 work= 3  10.6s $0.00342 ok=True
+single_naive           L2           rep 0 calls= 1 in=    59 out=    3 think=  287 coord= 0 work= 0   1.7s $0.00074 ok=True
+workflow               L1           rep 1 calls= 7 in=  3796 out=   90 think=  546 coord= 2 work= 3   8.3s $0.00273 ok=False
+Wrote baseline/evidence/case0_calculator_adk1.jsonl

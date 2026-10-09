@@ -79,8 +79,8 @@ def check_draft(tool_context: ToolContext) -> dict:
     Returns:
         dict: {"passed": bool, "violations": [...]}
     """
-    brief = ""
-    if tool_context.user_content and tool_context.user_content.parts:
+    brief = tool_context.state.get("brief", "")  # ADK 2.x variants keep the brief in state
+    if not brief and tool_context.user_content and tool_context.user_content.parts:
         brief = "".join(p.text or "" for p in tool_context.user_content.parts)
     draft = tool_context.state.get("draft", "")
     violations = check(parse_constraints(brief), draft) if draft else ["no draft saved yet"]

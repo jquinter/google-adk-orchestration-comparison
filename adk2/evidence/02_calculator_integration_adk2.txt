@@ -1,0 +1,56 @@
+==================================================
+ RUNNING SYSTEM INTEGRATION TESTS
+==================================================
+
+--- Testing: Multi-agent Calculator (parent_and_subagents) ---
+Running: .venv2/bin/adk run adk_multiagent_systems/parent_and_subagents ((12 + 8) * 5) - (10 / 2) + (4 * 6) - (50 / 5)
+Agent Output:
+Log setup complete: <TMPDIR>/agents_log/agent.20261009_014210.log
+To access latest log: tail -F <TMPDIR>/agents_log/agent.latest.log
+[adder]: The updated expression after performing additions is: `((20) * 5) - (10 / 2) + (4 * 6) - (50 / 5)`
+[multiplier]: The updated expression after performing multiplications is: `(100) - (10 / 2) + (24) - (50 / 5)`
+
+[zero_division_guard]: Valid division. Safe to proceed.
+[divider]: The updated expression after performing divisions is: `(100) - (5) + (24) - (10)`
+[substracter]: The updated expression after performing subtractions is: `95 + 14`
+
+[adder]: The updated expression after performing additions is: `109`
+[steering]: The final answer is 109.
+✅ PASS: Found expected result '109' in the output.
+
+--- Testing: Workflow-based Calculator (workflow_agents) ---
+Running: .venv2/bin/adk run adk_multiagent_systems/workflow_agents ((12 + 8) * 5) - (10 / 2) + (4 * 6) - (50 / 5)
+Agent Output:
+Log setup complete: <TMPDIR>/agents_log/agent.20261009_014242.log
+To access latest log: tail -F <TMPDIR>/agents_log/agent.latest.log
+[adder]: (20 * 5) - (10 / 2) + (4 * 6) - (50 / 5)
+[substracter]: 95 + 24 - 10
+[multiplier]: No multiplications were found.
+[divider]: No divisions were found.
+[adder]: 119 - 10
+❌ FAIL: Expected result '109' NOT found in the output.
+
+--- Testing: Multi-agent Zero-Division Guard ---
+Running: .venv2/bin/adk run adk_multiagent_systems/parent_and_subagents Please evaluate 10 / 0
+Agent Output:
+Log setup complete: <TMPDIR>/agents_log/agent.20261009_014311.log
+To access latest log: tail -F <TMPDIR>/agents_log/agent.latest.log
+[zero_division_guard]: Error: División por cero detectada. Operación cancelada.
+[divider]: Error: División por cero detectada. Operación cancelada.
+[steering]: Error: División por cero detectada. Operación cancelada.
+✅ PASS: Found expected result 'División por cero detectada' in the output.
+
+--- Testing: Workflow-based Zero-Division Guard ---
+Running: .venv2/bin/adk run adk_multiagent_systems/workflow_agents Please evaluate 10 / 0
+Agent Output:
+Log setup complete: <TMPDIR>/agents_log/agent.20261009_014323.log
+To access latest log: tail -F <TMPDIR>/agents_log/agent.latest.log
+[adder]: No additions were found.
+[substracter]: No subtractions were found.
+[multiplier]: No multiplications were found.
+[zero_division_guard]: Error: División por cero detectada. Operación cancelada.
+✅ PASS: Found expected result 'División por cero detectada' in the output.
+
+==================================================
+🚨 SOME TESTS FAILED. Please review the output above. 🚨
+exit=1

@@ -1,0 +1,16 @@
+multiagent B            rep-1 calls= 5 in=  3082 out=   75 coord= 4 work= 0  10.2s $0.00111 ok=True
+workflow   B            rep-1 calls=10 in=  6109 out=  103 coord= 4 work= 2  17.5s $0.00209 ok=True
+multiagent L3           rep 0 calls=27 in= 43817 out=  456 coord=26 work= 0  65.3s $0.01429 ok=True
+multiagent L4           rep 0 calls=15 in= 17229 out=  494 coord=14 work= 0  29.5s $0.00640 ok=True
+multiagent G2           rep 0 calls= 9 in=  6172 out=  198 coord= 8 work= 0  32.5s $0.00235 ok=None
+workflow   L3           rep 0 calls=12 in=  9578 out=  203 coord= 2 work= 5  15.6s $0.00338 ok=True
+workflow   L1           rep 0 calls= 7 in=  3806 out=  115 coord= 2 work= 3  25.3s $0.00143 ok=False
+workflow   B            rep 0 calls=10 in=  6128 out=   95 coord= 4 work= 2  10.0s $0.00208 ok=True
+workflow   G2           rep 0 calls= 9 in=  5297 out=  141 coord= 3 work= 3   9.4s $0.00194 ok=None
+multiagent L2           rep 0 calls=13 in= 14635 out=  194 coord=12 work= 0 239.8s $0.00488 ok=False
+workflow   G1           rep 0 calls= 7 in=  3602 out=   74 coord= 3 work= 1  11.9s $0.00127 ok=None
+multiagent B            rep 0 calls= 5 in=  3042 out=   71 coord= 4 work= 0  11.5s $0.00109 ok=True
+multiagent G1           rep 0 calls= 5 in=  3089 out=   88 coord= 4 work= 0   5.8s $0.00115 ok=None
+multiagent L1           rep 0 calls=11 in=  8733 out=  182 coord=10 work= 0  12.4s $0.00307 ok=True
+workflow   L4           rep 0 calls=33 in= 89544 out=  793 coord= 8 work=12 205.4s $0.02885 ok=True
+workflow   L2           rep 0 calls=11 in= 14907 out=  139 coord= 2 work= 5  24.6s $0.00482 ok=True

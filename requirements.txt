@@ -1,9 +1,9 @@
 # Runtime — PINNED TO ADK 1.x.
 # The agents use the 1.x API (Agent with transfer_to_agent routing, LoopAgent,
-# exit_loop). ADK 2.0 (GA) introduced breaking changes to the agent API, the
-# event model and the session schema, so a bare `pip install google-adk` —
-# which now resolves to 2.x — will NOT run this repo as-is.
-# See README › "ADK version compatibility".
+# exit_loop). They also run unchanged on ADK 2.x, where SequentialAgent /
+# LoopAgent / ParallelAgent are deprecated in favour of Workflow; the pin keeps
+# the 1.x results reproducible and avoids breakage when those are removed.
+# The ADK 2.x ports live in adk2/ (separate virtualenv: adk2/requirements.txt).
 google-adk<2
 
 # Imported directly by the agents.

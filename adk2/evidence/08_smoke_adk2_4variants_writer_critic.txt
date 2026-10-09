@@ -1,0 +1,25 @@
+multiagent_chat        W2           rep-1 calls= 5 in=  4807 out=   93 think=  329 coord= 2 work= 2   7.3s $0.00250 ok=False
+workflow_legacy        W2           rep-1 calls= 4 in=  1774 out=   74 think=  257 coord= 1 work= 2   5.8s $0.00136 ok=True
+multiagent_single_turn W2           rep-1 calls= 7 in=  3416 out=  375 think=  410 coord= 2 work= 2  11.0s $0.00299 ok=True
+workflow_graph         W2           rep-1 calls= 2 in=   882 out=  122 think=  292 coord= 0 work= 1   4.6s $0.00130 ok=True
+multiagent_single_turn W8           rep 0 calls=13 in= 10602 out=  775 think= 1767 coord= 4 work= 4  19.6s $0.00954 ok=False
+multiagent_single_turn W4           rep 0 calls= 7 in=  3648 out=  362 think=  527 coord= 2 work= 2   7.2s $0.00332 ok=True
+multiagent_chat        W2           rep 0 calls= 5 in=  5011 out=   81 think=  312 coord= 2 work= 2   5.8s $0.00249 ok=False
+workflow_legacy        W4           rep 0 calls=16 in= 17728 out=  262 think=  752 coord= 1 work= 8  13.7s $0.00785 ok=True
+workflow_legacy        W8           rep 0 calls= 4 in=  4410 out=  147 think= 2138 coord= 1 work= 2  14.3s $0.00704 ok=True
+multiagent_single_turn W6           rep 0 calls= 7 in=  4066 out=  400 think=  978 coord= 2 work= 2  11.5s $0.00466 ok=True
+workflow_graph         W8           rep 0 calls= 2 in=  1489 out=  119 think=  809 coord= 0 work= 1   5.6s $0.00277 ok=True
+multiagent_single_turn W2           rep 0 calls= 7 in=  3460 out=  395 think=  559 coord= 2 work= 2   8.7s $0.00342 ok=True
+workflow_graph         W4           rep 0 calls= 2 in=   915 out=  100 think=  307 coord= 0 work= 1   3.6s $0.00129 ok=True
+multiagent_chat        W6           rep 0 calls= 5 in=  4948 out=   76 think=  461 coord= 2 work= 2   5.9s $0.00283 ok=False
+multiagent_single_turn W_IMPOSSIBLE rep 0 calls=10 in=  6291 out=  682 think= 6150 coord= 3 work= 3  38.1s $0.01897 ok=False
+workflow_graph         W_IMPOSSIBLE rep 0 calls=10 in= 12027 out=  872 think= 9094 coord= 0 work= 5  61.8s $0.02852 ok=True
+workflow_graph         W2           rep 0 calls= 2 in=   738 out=  102 think=  168 coord= 0 work= 1   2.5s $0.00090 ok=True
+workflow_legacy        W2           rep 0 calls= 4 in=  1774 out=   67 think=  211 coord= 1 work= 2   3.6s $0.00123 ok=True
+workflow_legacy        W6           rep 0 calls= 4 in=  1897 out=   53 think=  845 coord= 1 work= 2   7.0s $0.00281 ok=True
+workflow_legacy        W_IMPOSSIBLE rep 0 calls=21 in= 38268 out=  679 think= 9829 coord= 0 work=11  59.3s $0.03775 ok=True
+workflow_graph         W6           rep 0 calls= 2 in=   972 out=  106 think=  328 coord= 0 work= 1  10.0s $0.00138 ok=True
+multiagent_chat        W8           rep 0 calls= 6 in=  7747 out=  113 think=  990 coord= 3 work= 2  12.5s $0.00508 ok=False
+multiagent_chat        W4           rep 0 calls= 6 in=  6800 out=   97 think=  361 coord= 3 work= 2   6.1s $0.00318 ok=False
+multiagent_chat        W_IMPOSSIBLE rep 0 calls=27 in= 99040 out=  697 think= 4509 coord=17 work= 9  61.3s $0.04273 ok=True
+Wrote adk2/evidence/raw/adk2_4variants_writer_critic.jsonl

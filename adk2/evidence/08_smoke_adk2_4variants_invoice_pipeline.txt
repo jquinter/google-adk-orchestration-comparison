@@ -1,0 +1,33 @@
+multiagent_chat        I1           rep-1 calls=13 in= 29808 out=  314 coord= 8 work= 4  22.5s $0.00973 ok=True
+workflow_legacy        I1           rep-1 calls= 8 in=  9624 out=  232 coord= 0 work= 4  81.9s $0.00347 ok=True
+multiagent_single_turn I1           rep-1 calls=10 in=  6380 out=  386 coord= 3 work= 3  20.4s $0.00288 ok=False
+workflow_graph         I1           rep-1 calls= 4 in=  2381 out=  170 coord= 0 work= 2   9.5s $0.00114 ok=True
+workflow_graph         R_RUT        rep 0 calls= 2 in=  1472 out=  122 coord= 0 work= 1   2.9s $0.00075 ok=True
+multiagent_chat        I6           rep 0 calls= 3 in=  3403 out=  285 coord= 1 work= 1   6.3s $0.00173 ok=False
+workflow_legacy        I6           rep 0 calls= 8 in= 12023 out=  317 coord= 0 work= 4   9.5s $0.00440 ok=True
+multiagent_single_turn I6           rep 0 calls=10 in=  9421 out=  588 coord= 3 work= 3  17.3s $0.00430 ok=False
+workflow_graph         I3           rep 0 calls= 4 in=  2405 out=  245 coord= 0 work= 2   8.5s $0.00133 ok=True
+workflow_graph         R_TOT        rep 0 calls= 2 in=  1463 out=  122 coord= 0 work= 1   3.2s $0.00074 ok=True
+multiagent_chat        R_TOT        rep 0 calls= 7 in= 11105 out=  211 coord= 4 work= 2  12.0s $0.00386 ok=True
+workflow_graph         R_TAX        rep 0 calls= 2 in=  2053 out=  124 coord= 0 work= 1   5.9s $0.00093 ok=True
+multiagent_single_turn I10          rep 0 calls= 7 in=  7603 out=  624 coord= 2 work= 2  14.4s $0.00384 ok=False
+multiagent_single_turn R_TOT        rep 0 calls= 7 in=  4736 out=  500 coord= 2 work= 2   9.2s $0.00267 ok=True
+workflow_legacy        I10          rep 0 calls= 8 in= 13669 out=  531 coord= 0 work= 4  13.6s $0.00543 ok=True
+workflow_legacy        R_TAX        rep 0 calls= 4 in=  3806 out=  139 coord= 0 work= 2   6.5s $0.00149 ok=True
+workflow_graph         I6           rep 0 calls= 4 in=  3439 out=  204 coord= 0 work= 2   7.9s $0.00154 ok=True
+multiagent_single_turn R_RUT        rep 0 calls= 7 in=  4639 out=  449 coord= 2 work= 2   7.6s $0.00251 ok=True
+workflow_legacy        R_TOT        rep 0 calls= 4 in=  3491 out=  139 coord= 0 work= 2   4.1s $0.00139 ok=True
+workflow_legacy        I3           rep 0 calls= 8 in= 10967 out=  284 coord= 0 work= 4  10.9s $0.00400 ok=True
+workflow_legacy        R_RUT        rep 0 calls= 4 in=  3484 out=  146 coord= 0 work= 2   5.1s $0.00141 ok=True
+workflow_graph         I1           rep 0 calls= 4 in=  1965 out=  201 coord= 0 work= 2   5.8s $0.00109 ok=True
+multiagent_single_turn I1           rep 0 calls=10 in=  6438 out=  381 coord= 3 work= 3  11.4s $0.00288 ok=False
+workflow_graph         I10          rep 0 calls= 4 in=  4472 out=  284 coord= 0 work= 2  10.5s $0.00205 ok=True
+workflow_legacy        I1           rep 0 calls= 8 in=  9464 out=  236 coord= 0 work= 4   9.2s $0.00343 ok=True
+multiagent_chat        R_RUT        rep 0 calls= 6 in=  8736 out=  274 coord= 3 work= 2  10.4s $0.00331 ok=True
+multiagent_chat        R_TAX        rep 0 calls= 7 in= 10787 out=  258 coord= 4 work= 2   9.1s $0.00388 ok=True
+multiagent_chat        I10          rep 0 calls=13 in= 36516 out=  417 coord= 8 work= 4  19.7s $0.01200 ok=True
+multiagent_chat        I3           rep 0 calls=13 in= 31401 out=  426 coord= 8 work= 4  18.2s $0.01049 ok=True
+multiagent_single_turn R_TAX        rep 0 calls= 7 in=  5662 out=  574 coord= 2 work= 2  11.6s $0.00313 ok=True
+multiagent_single_turn I3           rep 0 calls=10 in=  8796 out=  882 coord= 3 work= 3  15.0s $0.00484 ok=False
+multiagent_chat        I1           rep 0 calls=13 in= 29829 out=  333 coord= 8 work= 4  35.5s $0.00978 ok=True
+Wrote adk2/evidence/raw/adk2_4variants_invoice_pipeline.jsonl

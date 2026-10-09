@@ -35,7 +35,7 @@ def main():
     for r in rows:
         cells[(r["pattern"], r["rung"], r["ops"])].append(r)
 
-    hdr = (f'{"patrón":10} {"peld":4} {"ops":>3} {"llamadas":>12} '
+    hdr = (f'{"patrón":22} {"peld":4} {"ops":>3} {"llamadas":>12} '
            f'{"in_tok":>14} {"out_tok":>13} {"costo_usd":>17} '
            f'{"wall_s":>12} {"transf":>8} {"updt":>6} {"ok%":>5}')
     print(hdr)
@@ -52,7 +52,7 @@ def main():
         d_m, d_s = agg([r["cost_usd"] for r in g])
         w_m, w_s = agg([r["wall_s"] for r in g])
         # Calculator: transfer_to_agent vs. update_expression. Examples: coordination vs. work tool calls.
-        if g[0].get("example", "calculator") == "calculator":
+        if g[0].get("example", "calculator") == "calculator" and pat in ("multiagent", "workflow"):
             tr_m, _ = agg([r["tool_calls"].get("transfer_to_agent", 0) for r in g])
             up_m, _ = agg([r["tool_calls"].get("update_expression", 0) for r in g])
         else:
@@ -62,7 +62,7 @@ def main():
         graded = [r["correct"] for r in g if r["correct"] is not None]
         okp = 100 * sum(graded) / len(graded) if graded else float("nan")
 
-        print(f'{pat:10} {rung:4} {ops:>3} '
+        print(f'{pat:22} {rung:4} {ops:>3} '
               f'{c_m:>6.1f}±{c_s:<4.1f} '
               f'{i_m:>8.0f}±{i_s:<4.0f} '
               f'{o_m:>7.0f}±{o_s:<4.0f} '

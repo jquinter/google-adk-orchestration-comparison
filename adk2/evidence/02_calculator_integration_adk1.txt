@@ -1,0 +1,43 @@
+Error running agent: Usage: adk run [OPTIONS] AGENT
+Try 'adk run --help' for help.
+
+Error: Got unexpected extra argument (((12 + 8) * 5) - (10 / 2) + (4 * 6) - (50 / 5))
+
+Error running agent: Usage: adk run [OPTIONS] AGENT
+Try 'adk run --help' for help.
+
+Error: Got unexpected extra argument (((12 + 8) * 5) - (10 / 2) + (4 * 6) - (50 / 5))
+
+Error running agent: Usage: adk run [OPTIONS] AGENT
+Try 'adk run --help' for help.
+
+Error: Got unexpected extra argument (Please evaluate 10 / 0)
+
+Error running agent: Usage: adk run [OPTIONS] AGENT
+Try 'adk run --help' for help.
+
+Error: Got unexpected extra argument (Please evaluate 10 / 0)
+
+==================================================
+ RUNNING SYSTEM INTEGRATION TESTS
+==================================================
+
+--- Testing: Multi-agent Calculator (parent_and_subagents) ---
+Running: .venv/bin/adk run adk_multiagent_systems/parent_and_subagents ((12 + 8) * 5) - (10 / 2) + (4 * 6) - (50 / 5)
+❌ FAIL: Command execution failed with code 2
+
+--- Testing: Workflow-based Calculator (workflow_agents) ---
+Running: .venv/bin/adk run adk_multiagent_systems/workflow_agents ((12 + 8) * 5) - (10 / 2) + (4 * 6) - (50 / 5)
+❌ FAIL: Command execution failed with code 2
+
+--- Testing: Multi-agent Zero-Division Guard ---
+Running: .venv/bin/adk run adk_multiagent_systems/parent_and_subagents Please evaluate 10 / 0
+❌ FAIL: Command execution failed with code 2
+
+--- Testing: Workflow-based Zero-Division Guard ---
+Running: .venv/bin/adk run adk_multiagent_systems/workflow_agents Please evaluate 10 / 0
+❌ FAIL: Command execution failed with code 2
+
+==================================================
+🚨 SOME TESTS FAILED. Please review the output above. 🚨
+exit=1

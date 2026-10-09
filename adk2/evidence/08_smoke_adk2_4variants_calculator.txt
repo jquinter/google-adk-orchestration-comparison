@@ -1,0 +1,32 @@
+multiagent_chat        B            rep-1 calls= 5 in=  4497 out=   66 coord= 4 work= 0  11.1s $0.00151 ok=True
+workflow_legacy        B            rep-1 calls= 9 in= 10474 out=   92 coord= 4 work= 2  16.3s $0.00337 ok=True
+multiagent_single_turn B            rep-1 calls= 5 in=  1057 out=   41 coord= 2 work= 0  12.3s $0.00042 ok=True
+workflow_graph         B            rep-1 calls= 1 in=    49 out=    1 coord= 0 work= 0   1.9s $0.00002 ok=True
+workflow_graph         B            rep 0 calls= 1 in=    49 out=    1 coord= 0 work= 0   0.6s $0.00002 ok=True
+workflow_graph         G1           rep 0 calls= 0 in=     0 out=    0 coord= 0 work= 0   0.0s $0.00000 ok=None
+multiagent_chat        L4           rep 0 calls=25 in= 91284 out=  571 coord=24 work= 0  43.4s $0.02881 ok=True
+multiagent_single_turn L3           rep 0 calls= 9 in=  2717 out=   64 coord= 4 work= 0   9.9s $0.00098 ok=False
+workflow_legacy        L4           rep 0 calls=11 in= 24232 out=  238 coord= 2 work= 4  28.3s $0.00786 ok=True
+workflow_legacy        B            rep 0 calls= 9 in= 10602 out=  101 coord= 4 work= 2  11.3s $0.00343 ok=True
+multiagent_chat        L3           rep 0 calls=13 in= 25417 out=  213 coord=12 work= 0  20.3s $0.00816 ok=True
+workflow_graph         L1           rep 0 calls= 4 in=   195 out=    6 coord= 0 work= 0   7.6s $0.00007 ok=True
+workflow_legacy        L3           rep 0 calls=13 in= 23903 out=  192 coord= 2 work= 5  24.0s $0.00765 ok=True
+multiagent_single_turn L4           rep 0 calls= 9 in=  2613 out=   58 coord= 4 work= 0  11.9s $0.00093 ok=False
+multiagent_single_turn G1           rep 0 calls= 5 in=  1047 out=   75 coord= 2 work= 0   5.1s $0.00050 ok=None
+workflow_graph         L4           rep 0 calls=14 in=   694 out=   32 coord= 0 work= 0  14.0s $0.00029 ok=True
+workflow_graph         G2           rep 0 calls= 2 in=    96 out=    3 coord= 0 work= 0   2.4s $0.00004 ok=None
+multiagent_chat        L2           rep 0 calls=13 in= 24454 out=  216 coord=12 work= 0  20.2s $0.00788 ok=True
+workflow_graph         L3           rep 0 calls= 8 in=   395 out=   18 coord= 0 work= 0   8.0s $0.00016 ok=True
+multiagent_chat        G2           rep 0 calls= 2 in=  1053 out=   20 coord= 1 work= 0  10.9s $0.00037 ok=None
+multiagent_single_turn L2           rep 0 calls= 7 in=  1862 out=   54 coord= 3 work= 0   7.7s $0.00069 ok=False
+multiagent_single_turn L1           rep 0 calls= 7 in=  1495 out=   54 coord= 3 work= 0   8.3s $0.00058 ok=False
+workflow_legacy        G2           rep 0 calls= 9 in= 10914 out=   98 coord= 3 work= 3  11.8s $0.00352 ok=None
+workflow_legacy        L1           rep 0 calls= 7 in=  7172 out=   81 coord= 2 work= 3   9.5s $0.00235 ok=False
+multiagent_single_turn B            rep 0 calls= 5 in=  1111 out=   41 coord= 2 work= 0   7.0s $0.00044 ok=True
+workflow_legacy        L2           rep 0 calls=11 in= 22944 out=  155 coord= 2 work= 5  31.4s $0.00727 ok=True
+workflow_legacy        G1           rep 0 calls= 7 in=  6695 out=   74 coord= 3 work= 1   9.4s $0.00219 ok=None
+multiagent_chat        G1           rep 0 calls= 5 in=  4633 out=   79 coord= 4 work= 0   7.0s $0.00159 ok=None
+multiagent_single_turn G2           rep 0 calls= 5 in=  1357 out=   17 coord= 2 work= 0   5.0s $0.00045 ok=None
+multiagent_chat        L1           rep 0 calls=11 in= 18079 out=  191 coord=10 work= 0  15.4s $0.00590 ok=True
+workflow_graph         L2           rep 0 calls= 6 in=   295 out=   13 coord= 0 work= 0  12.5s $0.00012 ok=True
+multiagent_chat        B            rep 0 calls= 5 in=  4609 out=   58 coord= 4 work= 0   5.5s $0.00153 ok=True

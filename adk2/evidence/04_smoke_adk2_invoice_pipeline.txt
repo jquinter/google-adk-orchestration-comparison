@@ -1,0 +1,17 @@
+multiagent I1           rep-1 calls=13 in= 29876 out=  323 coord= 8 work= 4  22.9s $0.00977 ok=True
+workflow   I1           rep-1 calls= 8 in=  9293 out=  223 coord= 0 work= 4   9.7s $0.00335 ok=True
+multiagent I10          rep 0 calls=13 in= 36929 out=  422 coord= 8 work= 4  23.8s $0.01213 ok=True
+workflow   I6           rep 0 calls= 8 in= 11711 out=  397 coord= 0 work= 4  11.2s $0.00451 ok=True
+multiagent R_TOT        rep 0 calls= 7 in= 11226 out=  219 coord= 4 work= 2   8.7s $0.00392 ok=True
+workflow   I3           rep 0 calls= 8 in= 10588 out=  314 coord= 0 work= 4   9.1s $0.00396 ok=True
+workflow   I10          rep 0 calls= 8 in= 13631 out=  488 coord= 0 work= 4  14.3s $0.00531 ok=True
+workflow   R_TAX        rep 0 calls= 4 in=  3565 out=  224 coord= 0 work= 2   4.3s $0.00163 ok=True
+multiagent I1           rep 0 calls=13 in= 30652 out=  314 coord= 8 work= 4  17.3s $0.00998 ok=True
+multiagent I6           rep 0 calls= 6 in=  9947 out=  197 coord= 3 work= 2  11.3s $0.00348 ok=False
+workflow   I1           rep 0 calls= 8 in=  9407 out=  227 coord= 0 work= 4   8.7s $0.00339 ok=True
+workflow   R_RUT        rep 0 calls= 4 in=  3487 out=  210 coord= 0 work= 2   4.7s $0.00157 ok=True
+multiagent I3           rep 0 calls=13 in= 31274 out=  396 coord= 8 work= 4  19.0s $0.01037 ok=True
+multiagent R_RUT        rep 0 calls= 6 in=  8769 out=  281 coord= 3 work= 2   9.5s $0.00333 ok=True
+workflow   R_TOT        rep 0 calls= 4 in=  3491 out=  139 coord= 0 work= 2   5.0s $0.00139 ok=True
+multiagent R_TAX        rep 0 calls= 7 in= 11196 out=  220 coord= 4 work= 2  12.2s $0.00391 ok=True
+exit=0

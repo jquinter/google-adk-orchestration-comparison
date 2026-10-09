@@ -42,10 +42,24 @@ plt.rcParams.update({
 COLOR = {
     "multiagent": "#D1495B",   # rojo — el patrón que paga el impuesto
     "workflow":   "#2E86AB",   # azul — el loop determinista
+    # ADK 2.x (--adk2): mismo código 1.x + los ports de adk2/
+    "multiagent_chat":        "#D1495B",
+    "multiagent_single_turn": "#EDAE49",
+    "workflow_legacy":        "#2E86AB",
+    "workflow_graph":         "#00798C",
+    # Caso 0: un solo agente, sin orquestación
+    "single_naive":           "#8A949E",
+    "single_structured":      "#3B8B5A",
 }
 LABEL = {
     "multiagent": "Multi-agente (ruteo dinámico)",
     "workflow":   "Workflow loop (LoopAgent)",
+    "multiagent_chat":        "Multi-agente chat (transfer_to_agent)",
+    "multiagent_single_turn": "Multi-agente single_turn (2.x)",
+    "workflow_legacy":        "Workflow agents (deprecados en 2.x)",
+    "workflow_graph":         "Workflow graph (2.x)",
+    "single_naive":           "Caso 0a: agente único, instrucción mínima",
+    "single_structured":      "Caso 0b: agente único, instrucción estructurada",
 }
 
 
@@ -133,6 +147,8 @@ def fig2_predictibilidad(by_pat, out):
 
 def fig3_coordinacion(by_pat, out):
     """Tool-calls por corrida: transfers (coordinación) vs. updates (trabajo)."""
+    if set(by_pat) != {"multiagent", "workflow"}:
+        return fig3_coordinacion_por_patron(by_pat, out)
     rungs = _ordered_rungs(by_pat)
     x = range(len(rungs))
     width = 0.38
@@ -155,6 +171,31 @@ def fig3_coordinacion(by_pat, out):
     ax.set_xticks(list(x))
     ax.set_xticklabels(rungs)
     ax.legend(frameon=False, fontsize=11)
+    fig.tight_layout()
+    fig.savefig(out)
+    plt.close(fig)
+    print(f"  {out}")
+
+
+def fig3_coordinacion_por_patron(by_pat, out):
+    """Llamadas de coordinación por corrida (transfer_to_agent, exit_loop y
+    delegaciones single_turn), agrupadas por peldaño, una barra por patrón."""
+    rungs = _ordered_rungs(by_pat)
+    x = range(len(rungs))
+    pats = list(by_pat.keys())
+    width = 0.8 / len(pats)
+    fig, ax = plt.subplots(figsize=(11, 5.4))
+    for i, pat in enumerate(pats):
+        m = {r["rung"]: r for r in by_pat[pat]}
+        offset = (i - (len(pats) - 1) / 2) * width
+        ax.bar([xi + offset for xi in x], [m.get(rg, {}).get("transfers_mean", 0.0) for rg in rungs],
+               width, color=COLOR.get(pat, "#666"), label=LABEL.get(pat, pat))
+    ax.set_title("Llamadas de coordinación por corrida")
+    ax.set_ylabel("Tool-calls de coordinación (media)")
+    ax.set_xlabel("Peldaño de complejidad")
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(rungs)
+    ax.legend(frameon=False, fontsize=10)
     fig.tight_layout()
     fig.savefig(out)
     plt.close(fig)

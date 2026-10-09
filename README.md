@@ -4,18 +4,16 @@ This repository contains two alternative implementations of a mathematical expre
 
 It provides a comparative codebase demonstrating the differences between **Dynamic Multi-Agent Routing** and **Structured Workflow Loops (`LoopAgent`)**, including deep hierarchical nesting and error boundary validation.
 
-> ### ⚠️ ADK version compatibility
+> ### ADK version compatibility
 >
-> This code targets **ADK 1.x**. It uses the 1.x agent API — `Agent` with `transfer_to_agent` routing, `LoopAgent`, and `exit_loop`. **ADK 2.0 (GA) introduced breaking changes** to the agent API, the event model, and the session schema, so a bare `pip install google-adk` — which now resolves to 2.x — will **not** run this repo as-is. Install the pinned dependencies with `pip install -r requirements.txt` (which pins `google-adk<2`).
+> The code in `adk_multiagent_systems/` and `examples/` was written against **ADK 1.x** and **also runs unchanged on ADK 2.11** — verified offline and against Gemini, see [`adk2/evidence/`](adk2/evidence/). In 2.x, `transfer_to_agent` routing is still the default (`mode="chat"`), while `SequentialAgent`, `LoopAgent` and `ParallelAgent` are **deprecated** in favour of `Workflow`: they emit a `DeprecationWarning` but work. `requirements.txt` pins `google-adk<2` so the 1.x results stay reproducible and nothing breaks when the deprecated agents are removed.
 >
-> The two patterns map cleanly onto ADK 2.0's dual orchestration model, so the comparison stays conceptually current:
->
-> | This repo (ADK 1.x) | ADK 2.0 equivalent |
+> | This repo (ADK 1.x) | ADK 2.x |
 > |---|---|
-> | Multi-agent routing (`transfer_to_agent`) | **Task API** — coordinator + sub-agents delegation |
-> | `LoopAgent` workflow | **Workflow DAG** (`google.adk.Workflow`) |
+> | Multi-agent routing (`sub_agents` + `transfer_to_agent`) | Unchanged (`mode="chat"`), or **`mode="single_turn"`**: each specialist becomes a function tool of the coordinator and always returns control (`mode="task"` adds multi-turn delegation) |
+> | `SequentialAgent` / `LoopAgent` + `exit_loop` | **`google.adk.Workflow`** graph: nodes (agents, functions, tools) and edges; routing decisions are code (`ctx.route`), cycles are bounded in code |
 >
-> The findings below — the coordination-cost trade-off and the failure modes — are *structural*: they describe orchestrating with an LLM vs. with code, not a specific API version, and hold after migration. A 2.0 port is future work.
+> [`adk2/`](adk2/) ports every case to both 2.x forms and benchmarks four variants side by side. Two 2.x behaviours matter for this comparison: inter-agent history is wrapped in anti-prompt-injection quoting (**+30–70% input tokens on identical code**), and the dev UI now flags every `transfer_to_agent` as a context-cache miss.
 
 ---
 
@@ -143,6 +141,8 @@ LLM-call and token counts are the robust, reproducible metrics and drive both co
 ## More examples
 
 The calculator isolates the coordination tax in its simplest form. [`examples/`](examples/) applies the same comparison to production-shaped problems — an invoice pipeline (workflow wins), support triage with mid-flight discovery (multi-agent wins) and a writer/critic loop — each with code-graded cases that plug into the benchmark via `--example`. See [`examples/README.md`](examples/README.md).
+
+**Case 0** — what a single, well-instructed agent does with the same problem, with no orchestration at all — lives in [`baseline/`](baseline/).
 
 ---
 

@@ -1,0 +1,28 @@
+1. Build all agents and their tool declarations
+  PASS invoice_pipeline/multiagent: 4 tool declarations built
+  PASS invoice_pipeline/workflow: 4 tool declarations built
+  PASS support_triage/multiagent: 9 tool declarations built
+  PASS support_triage/workflow: 10 tool declarations built
+  PASS writer_critic/multiagent: 2 tool declarations built
+  PASS writer_critic/workflow: 3 tool declarations built
+2. Cases are self-consistent
+  PASS writer W2 parses 2 constraints
+  PASS writer W4 parses 4 constraints
+  PASS writer W6 parses 6 constraints
+  PASS writer W8 parses 8 constraints
+  PASS a compliant draft passes W8
+  PASS W_IMPOSSIBLE can never pass
+  PASS writer grader accepts compliant draft
+  PASS writer grader rejects a false APPROVED
+  PASS invoice grader accepts CLP-formatted total
+3. Workflow code paths with a scripted LLM
+  PASS invoice reject short-circuits: 'STATUS: REJECTED | REASONS: INVALID_RUT'
+  PASS normalizer/accountant never called the LLM
+  PASS journal entry posted and balanced
+  PASS dispatcher ran billing + returns
+  PASS dispatcher skipped unrouted teams
+  PASS triage grader accepts M_BILL_RET
+  PASS presenter prints approved draft after exit_loop
+  PASS writer grader accepts presenter output
+  PASS loop bounded at 5 rounds (revision=5)
+ALL PASSED

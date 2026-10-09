@@ -45,13 +45,15 @@ def halt_if_rejected(callback_context: CallbackContext) -> Optional[types.Conten
 
 
 def make_specialists(pattern: str) -> list[Agent]:
+    """pattern: "multiagent" (transfer back), "workflow" (SequentialAgent) or
+    "single_turn" (ADK 2.x: no transcript; the raw invoice comes from state)."""
     common = dict(
         generate_content_config=DETERMINISTIC,
         before_model_callback=log_query_to_model,
         after_model_callback=log_model_response,
     )
-    if pattern == "workflow":
-        # Inside a SequentialAgent the order is code; specialists never transfer.
+    if pattern in ("workflow", "single_turn"):
+        # The order is code (or a function-like call); specialists never transfer.
         common.update(disallow_transfer_to_parent=True, disallow_transfer_to_peers=True)
 
     extractor = Agent(
@@ -60,7 +62,7 @@ def make_specialists(pattern: str) -> list[Agent]:
         description="Extracts structured fields from a raw invoice text.",
         instruction=f"""
         - You are the invoice extraction specialist.
-        - Read the raw invoice text provided by the user.
+        {"- The raw invoice text is: {raw_input?}" if pattern == "single_turn" else "- Read the raw invoice text provided by the user."}
         - Extract the issuer RUT and name, invoice number, issue date, every line item
           (description, quantity, unit price) and the net, VAT (IVA) and total amounts.
         - Copy values exactly as printed: do NOT fix, recompute or round anything.

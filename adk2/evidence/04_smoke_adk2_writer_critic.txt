@@ -1,0 +1,13 @@
+multiagent W2           rep-1 calls= 8 in= 11163 out=  230 coord= 4 work= 3  18.6s $0.00392 ok=True
+workflow   W2           rep-1 calls= 4 in=  1795 out=   75 coord= 1 work= 2   4.5s $0.00073 ok=True
+multiagent W4           rep 0 calls= 5 in=  5199 out=   91 coord= 2 work= 2   5.4s $0.00179 ok=False
+multiagent W2           rep 0 calls= 5 in=  5011 out=  100 coord= 2 work= 2   4.2s $0.00175 ok=False
+workflow   W_IMPOSSIBLE rep 0 calls=20 in= 54802 out=  906 coord= 0 work=10  39.4s $0.01871 ok=True
+multiagent W8           rep 0 calls= 5 in=  5882 out=   93 coord= 2 work= 2   9.1s $0.00200 ok=False
+workflow   W6           rep 0 calls= 6 in=  3567 out=   66 coord= 1 work= 2   6.4s $0.00124 ok=True
+multiagent W6           rep 0 calls= 5 in=  5248 out=   72 coord= 2 work= 2   5.5s $0.00175 ok=False
+workflow   W2           rep 0 calls= 6 in=  3302 out=   81 coord= 1 work= 2   7.2s $0.00119 ok=True
+workflow   W4           rep 0 calls= 4 in=  1862 out=   76 coord= 1 work= 2   4.4s $0.00075 ok=True
+multiagent W_IMPOSSIBLE rep 0 calls=25 in= 84339 out=  905 coord=16 work= 8  50.0s $0.02756 ok=True
+workflow   W8           rep 0 calls=12 in= 10837 out=  201 coord= 1 work= 6  17.9s $0.00375 ok=True
+exit=0

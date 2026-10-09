@@ -1,0 +1,17 @@
+# Environment versions — captured 2026-10-09T05:41Z
+
+## .venv (ADK 1.x)
+Python 3.13.11
+Name: google-adk
+Version: 1.39.1
+Name: google-genai
+Version: 2.28.0
+
+## .venv2 (ADK 2.x)
+Python 3.13.11
+Name: google-adk
+Version: 2.11.0
+Name: google-genai
+Version: 2.28.0
+
+MODEL=gemini-2.5-flash  LOCATION=us-central1

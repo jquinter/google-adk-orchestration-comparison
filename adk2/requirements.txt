@@ -1,0 +1,10 @@
+# ADK 2.x port. Install in a SEPARATE virtualenv (ADK 1.x and 2.x cannot coexist):
+#     python3.13 -m venv .venv2 && .venv2/bin/pip install -r adk2/requirements.txt
+google-adk>=2.11,<3
+google-genai
+google-cloud-logging
+python-dotenv
+pydantic>=2
+
+# Benchmark tooling (benchmark/).
+matplotlib>=3.8

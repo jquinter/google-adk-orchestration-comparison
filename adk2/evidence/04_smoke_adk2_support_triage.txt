@@ -1,0 +1,17 @@
+multiagent T_BILL       rep-1 calls= 5 in=  4985 out=  116 coord= 2 work= 2  42.7s $0.00179 ok=True
+workflow   T_BILL       rep-1 calls= 5 in=  2604 out=   68 coord= 0 work= 3   8.2s $0.00095 ok=True
+workflow   E_LEGAL      rep 0 calls= 4 in=  1796 out=   75 coord= 0 work= 2   3.9s $0.00073 ok=True
+multiagent T_TECH       rep 0 calls= 6 in=  6114 out=  174 coord= 2 work= 3   7.8s $0.00227 ok=True
+multiagent D_RET_TECH   rep 0 calls= 8 in= 11446 out=  219 coord= 3 work= 4  10.0s $0.00398 ok=True
+multiagent E_LEGAL      rep 0 calls= 4 in=  3372 out=  104 coord= 2 work= 1   5.7s $0.00127 ok=True
+workflow   M_BILL_RET   rep 0 calls= 7 in=  6009 out=  119 coord= 0 work= 4  19.8s $0.00210 ok=False
+multiagent M_BILL_RET   rep 0 calls= 8 in= 11910 out=  161 coord= 3 work= 4  13.6s $0.00398 ok=True
+workflow   T_BILL       rep 0 calls= 5 in=  2593 out=   61 coord= 0 work= 3  21.7s $0.00093 ok=True
+multiagent T_BILL       rep 0 calls= 5 in=  4869 out=   92 coord= 2 work= 2   6.1s $0.00169 ok=True
+workflow   T_TECH       rep 0 calls= 6 in=  3728 out=   96 coord= 0 work= 4   6.6s $0.00136 ok=True
+workflow   T_RET        rep 0 calls= 5 in=  2679 out=  107 coord= 0 work= 3   5.6s $0.00107 ok=True
+workflow   D_SUSP       rep 0 calls= 4 in=  1953 out=   52 coord= 0 work= 2   3.8s $0.00072 ok=False
+multiagent T_RET        rep 0 calls= 5 in=  4593 out=   98 coord= 2 work= 2   5.9s $0.00162 ok=True
+workflow   D_RET_TECH   rep 0 calls= 7 in=  5861 out=  154 coord= 0 work= 4   9.4s $0.00214 ok=False
+multiagent D_SUSP       rep 0 calls= 8 in= 11094 out=  164 coord= 4 work= 3  10.3s $0.00374 ok=True
+exit=0

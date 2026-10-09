@@ -159,7 +159,14 @@ def post_journal_entry(tool_context: ToolContext) -> dict:
     normalized = tool_context.state.get("normalized")
     if not invoice or not normalized:
         return {"status": "error", "message": "Invoice must be recorded and normalized first."}
+    entry = build_journal_entry(invoice, normalized)
+    tool_context.state["journal_entry"] = entry
+    logging.info(f"[Posted] {entry['entry_id']}")
+    return entry
 
+
+def build_journal_entry(invoice: dict, normalized: dict) -> dict:
+    """Debit expenses by category and VAT credit; credit accounts payable."""
     debits = defaultdict(int)
     for item, category in zip(invoice["line_items"], normalized["line_categories"]):
         debits[EXPENSE_ACCOUNTS[category]] += int(item["quantity"]) * int(item["unit_price"])
@@ -167,13 +174,10 @@ def post_journal_entry(tool_context: ToolContext) -> dict:
     lines.append({"account": VAT_CREDIT_ACCOUNT, "debit": int(invoice["tax_amount"]), "credit": 0})
     lines.append({"account": PAYABLE_ACCOUNT, "debit": 0, "credit": int(invoice["total_amount"])})
 
-    entry = {
+    return {
         "status": "posted",
         "entry_id": f"JE-{invoice['invoice_number']}",
         "date": normalized["issue_date"],
         "lines": lines,
         "total": int(invoice["total_amount"]),
     }
-    tool_context.state["journal_entry"] = entry
-    logging.info(f"[Posted] {entry['entry_id']}")
-    return entry

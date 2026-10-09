@@ -1,0 +1,33 @@
+multiagent_chat        T_BILL       rep-1 calls= 5 in=  4931 out=   93 coord= 2 work= 2  14.9s $0.00171 ok=True
+workflow_legacy        T_BILL       rep-1 calls= 5 in=  2695 out=   57 coord= 0 work= 3   7.0s $0.00095 ok=True
+multiagent_single_turn T_BILL       rep-1 calls= 5 in=  1760 out=   95 coord= 1 work= 2   8.3s $0.00077 ok=True
+workflow_graph         T_BILL       rep-1 calls= 4 in=  1652 out=   78 coord= 0 work= 2   9.4s $0.00069 ok=True
+multiagent_single_turn T_RET        rep 0 calls= 5 in=  1668 out=   89 coord= 1 work= 2   6.8s $0.00072 ok=True
+workflow_graph         M_BILL_RET   rep 0 calls= 7 in=  3081 out=  160 coord= 0 work= 4  12.4s $0.00132 ok=True
+workflow_graph         T_RET        rep 0 calls= 4 in=  1260 out=   76 coord= 0 work= 2   3.9s $0.00057 ok=True
+multiagent_chat        T_TECH       rep 0 calls= 6 in=  6300 out=  158 coord= 2 work= 3   8.1s $0.00229 ok=True
+workflow_graph         T_BILL       rep 0 calls= 4 in=  1715 out=   59 coord= 0 work= 2   5.0s $0.00066 ok=True
+workflow_legacy        D_SUSP       rep 0 calls= 4 in=  1726 out=   50 coord= 0 work= 2   4.4s $0.00064 ok=False
+multiagent_chat        T_RET        rep 0 calls= 5 in=  4591 out=  103 coord= 2 work= 2   7.6s $0.00163 ok=True
+workflow_graph         T_TECH       rep 0 calls= 5 in=  1984 out=  104 coord= 0 work= 3   6.7s $0.00086 ok=True
+workflow_legacy        T_TECH       rep 0 calls= 6 in=  3052 out=   83 coord= 0 work= 4   5.5s $0.00112 ok=True
+workflow_legacy        M_BILL_RET   rep 0 calls= 8 in=  7868 out=  160 coord= 0 work= 5   9.8s $0.00276 ok=True
+multiagent_single_turn T_BILL       rep 0 calls= 5 in=  1895 out=   79 coord= 1 work= 2   5.9s $0.00077 ok=True
+multiagent_single_turn D_RET_TECH   rep 0 calls= 9 in=  3491 out=  219 coord= 2 work= 4   9.8s $0.00159 ok=True
+multiagent_single_turn D_SUSP       rep 0 calls= 7 in=  2715 out=  132 coord= 2 work= 2   6.5s $0.00114 ok=True
+multiagent_chat        D_SUSP       rep 0 calls= 7 in=  9468 out=  176 coord= 3 work= 3   9.7s $0.00328 ok=True
+workflow_legacy        T_BILL       rep 0 calls= 5 in=  2955 out=   67 coord= 0 work= 3   4.4s $0.00105 ok=True
+multiagent_chat        M_BILL_RET   rep 0 calls= 8 in= 11806 out=  163 coord= 3 work= 4  10.0s $0.00395 ok=True
+workflow_legacy        E_LEGAL      rep 0 calls= 4 in=  1811 out=   86 coord= 0 work= 2   4.9s $0.00076 ok=True
+multiagent_single_turn M_BILL_RET   rep 0 calls= 9 in=  4089 out=  140 coord= 2 work= 4   8.7s $0.00158 ok=True
+workflow_graph         D_SUSP       rep 0 calls= 5 in=  1912 out=  110 coord= 0 work= 2   7.6s $0.00085 ok=True
+workflow_graph         E_LEGAL      rep 0 calls= 3 in=   850 out=   89 coord= 0 work= 1   5.1s $0.00048 ok=True
+multiagent_single_turn E_LEGAL      rep 0 calls= 4 in=  1131 out=  107 coord= 1 work= 1   4.1s $0.00061 ok=True
+workflow_legacy        T_RET        rep 0 calls= 5 in=  2405 out=   65 coord= 0 work= 3   5.2s $0.00088 ok=True
+multiagent_chat        T_BILL       rep 0 calls= 5 in=  5070 out=   75 coord= 2 work= 2   5.4s $0.00171 ok=True
+multiagent_chat        E_LEGAL      rep 0 calls= 4 in=  3287 out=  113 coord= 2 work= 1   6.1s $0.00127 ok=True
+workflow_legacy        D_RET_TECH   rep 0 calls= 8 in=  7063 out=  127 coord= 0 work= 5   8.9s $0.00244 ok=True
+multiagent_chat        D_RET_TECH   rep 0 calls= 8 in= 11116 out=  233 coord= 3 work= 4  10.5s $0.00392 ok=True
+workflow_graph         D_RET_TECH   rep 0 calls= 7 in=  2717 out=  204 coord= 0 work= 4  10.5s $0.00133 ok=True
+multiagent_single_turn T_TECH       rep 0 calls= 6 in=  1999 out=  139 coord= 1 work= 3   6.3s $0.00095 ok=True
+Wrote adk2/evidence/raw/adk2_4variants_support_triage.jsonl

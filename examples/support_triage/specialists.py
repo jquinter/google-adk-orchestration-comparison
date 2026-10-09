@@ -26,11 +26,15 @@ def _handoff(pattern: str) -> str:
 
 
 def make_specialists(pattern: str) -> list[Agent]:
+    """pattern: "multiagent" (transfer back), "workflow" (code dispatcher) or
+    "single_turn" (ADK 2.x: called like a function, reports back in its reply)."""
     common = dict(
         generate_content_config=DETERMINISTIC,
         before_model_callback=log_query_to_model,
         after_model_callback=log_model_response,
     )
+    if pattern == "single_turn":
+        common.update(disallow_transfer_to_parent=True, disallow_transfer_to_peers=True)
     scope = "- Only handle the part of the request that is in your scope."
 
     billing = Agent(
