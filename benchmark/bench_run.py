@@ -69,6 +69,7 @@ CALC_GUARD = [
 ]
 
 N = 10          # repetitions per cell
+RUN_TIMEOUT_S = 600  # a run that exceeds this is recorded as failed (error="TimeoutError")
 WARMUP = 1      # discarded per pattern (cold start)
 
 # Gemini 2.5 Flash, Vertex standard tier. Verified Oct 2026. UPDATE if you swap MODEL.
@@ -137,15 +138,40 @@ def load_example(name, adk2=False):
     return patterns, cases.LADDER, cases.GUARD, cases.grade
 
 
-async def one_run(root, text):
-    runner = InMemoryRunner(agent=root, app_name="bench")
-    session = await runner.session_service.create_session(app_name="bench", user_id="u")
-    msg = types.Content(role="user", parts=[types.Part(text=text)])
-
+async def one_run(root, text, timeout=RUN_TIMEOUT_S):
+    """Run one case and collect metrics. Never raises: an exception or a timeout
+    is recorded in m["error"] with the metrics gathered up to that point."""
     m = {"llm_calls": 0, "in_tok": 0, "out_tok": 0, "thought_tok": 0,
-         "tool_calls": {}, "activations": {}, "final_text": ""}
-
+         "tool_calls": {}, "activations": {}, "final_text": "", "error": None}
+    runner = session = None
     t0 = time.perf_counter()
+    try:
+        runner = InMemoryRunner(agent=root, app_name="bench")
+        session = await runner.session_service.create_session(app_name="bench", user_id="u")
+        await asyncio.wait_for(_consume(runner, session, text, m), timeout)
+    except asyncio.TimeoutError:
+        m["error"] = f"TimeoutError: run exceeded {timeout}s"
+    except Exception as e:  # noqa: BLE001 — record any failure and keep the benchmark going
+        m["error"] = f"{type(e).__name__}: {str(e)[:300]}"
+
+    m["wall_s"] = time.perf_counter() - t0
+    m["cost_usd"] = m["in_tok"] * PRICE_IN + (m["out_tok"] + m["thought_tok"]) * PRICE_OUT
+    coordination = COORDINATION_TOOLS | agent_names(root)
+    m["coordination_calls"] = sum(v for k, v in m["tool_calls"].items() if k in coordination)
+    m["work_calls"] = sum(v for k, v in m["tool_calls"].items() if k not in coordination)
+
+    state = {}
+    try:
+        if session is not None:
+            final = await runner.session_service.get_session(app_name="bench", user_id="u", session_id=session.id)
+            state = dict(final.state) if final else {}
+    except Exception:  # noqa: BLE001
+        pass
+    return m, state
+
+
+async def _consume(runner, session, text, m):
+    msg = types.Content(role="user", parts=[types.Part(text=text)])
     async for event in runner.run_async(user_id="u", session_id=session.id, new_message=msg):
         um = getattr(event, "usage_metadata", None)
         if um:
@@ -168,16 +194,6 @@ async def one_run(root, text):
         if output is not None:
             m["final_text"] = output if isinstance(output, str) else json.dumps(output, ensure_ascii=False)
 
-    m["wall_s"] = time.perf_counter() - t0
-    m["cost_usd"] = m["in_tok"] * PRICE_IN + (m["out_tok"] + m["thought_tok"]) * PRICE_OUT
-    coordination = COORDINATION_TOOLS | agent_names(root)
-    m["coordination_calls"] = sum(v for k, v in m["tool_calls"].items() if k in coordination)
-    m["work_calls"] = sum(v for k, v in m["tool_calls"].items() if k not in coordination)
-
-    final = await runner.session_service.get_session(app_name="bench", user_id="u", session_id=session.id)
-    state = dict(final.state) if final else {}
-    return m, state
-
 
 async def main():
     ap = argparse.ArgumentParser()
@@ -185,6 +201,7 @@ async def main():
     ap.add_argument("--reps", type=int, default=N)
     ap.add_argument("--adk2", action="store_true", help="benchmark the 4 ADK 2.x variants (needs ADK 2.x)")
     ap.add_argument("--patterns", default=None, help="comma-separated subset of patterns to run")
+    ap.add_argument("--timeout", type=int, default=RUN_TIMEOUT_S, help="per-run timeout in seconds")
     ap.add_argument("--out", default=None,
                     help="default: benchmark/results[_adk2].jsonl (calculator) or benchmark/results[_adk2]_<example>.jsonl")
     args = ap.parse_args()
@@ -214,8 +231,14 @@ async def main():
 
     with open(out, "w") as f:
         for pat, case, rep in jobs:
-            m, state = await one_run(patterns[pat], case["input"])
-            correct = grade(case, m["final_text"], {**m, "state": state})
+            m, state = await one_run(patterns[pat], case["input"], args.timeout)
+            if m["error"]:
+                correct = False  # a crashed or timed-out run counts as a failed run
+            else:
+                try:
+                    correct = grade(case, m["final_text"], {**m, "state": state})
+                except Exception as e:  # noqa: BLE001
+                    correct, m["error"] = False, f"grade failed: {type(e).__name__}: {e}"
             expected = case["expected"]
             rec = {"example": args.example, "pattern": pat, "rung": case["id"], "ops": case["complexity"],
                    "rep": rep, "expected": sorted(expected) if isinstance(expected, set) else expected,
@@ -226,7 +249,8 @@ async def main():
             print(f'{pat:22} {case["id"]:12} rep{rep:>2} '
                   f'calls={m["llm_calls"]:>2} in={m["in_tok"]:>6} out={m["out_tok"]:>5} think={m["thought_tok"]:>5} '
                   f'coord={m["coordination_calls"]:>2} work={m["work_calls"]:>2} '
-                  f'{m["wall_s"]:>5.1f}s ${m["cost_usd"]:.5f} ok={correct}')
+                  f'{m["wall_s"]:>5.1f}s ${m["cost_usd"]:.5f} ok={correct}'
+                  + (f'  ERROR {m["error"]}' if m["error"] else ''))
     print(f"\nWrote {out}")
 
 

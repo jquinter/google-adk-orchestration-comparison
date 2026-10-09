@@ -38,7 +38,7 @@ def main():
 
     hdr = (f'{"patrón":22} {"peld":4} {"ops":>3} {"llamadas":>12} '
            f'{"in_tok":>14} {"out_tok":>13} {"costo_usd":>17} '
-           f'{"wall_s":>12} {"transf":>8} {"updt":>6} {"ok%":>5}')
+           f'{"wall_s":>12} {"transf":>8} {"updt":>6} {"ok%":>5} {"err":>4}')
     print(hdr)
     print("-" * len(hdr))
 
@@ -61,6 +61,7 @@ def main():
             up_m, _ = agg([r["work_calls"] for r in g])
 
         graded = [r["correct"] for r in g if r["correct"] is not None]
+        errs = sum(1 for r in g if r.get("error"))  # crashed / timed-out runs (also counted as not ok)
         okp = 100 * sum(graded) / len(graded) if graded else float("nan")
 
         print(f'{pat:22} {rung:4} {ops:>3} '
@@ -70,7 +71,7 @@ def main():
               f'${d_m:>9.5f}±{d_s:<5.5f} '
               f'{w_m:>6.1f}±{w_s:<4.1f} '
               f'{tr_m:>7.1f} {up_m:>5.1f} '
-              f'{okp:>4.0f}')
+              f'{okp:>4.0f} {errs:>4}')
 
         export.append({
             "pattern": pat, "rung": rung, "ops": ops,
@@ -81,6 +82,7 @@ def main():
             "wall_s_mean": round(w_m, 2), "wall_s_sd": round(w_s, 2),
             "transfers_mean": round(tr_m, 2), "updates_mean": round(up_m, 2),
             "ok_pct": round(okp, 1) if graded else "",
+            "errors": errs,
         })
 
     if args.csv:
